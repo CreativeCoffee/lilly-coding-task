@@ -37,6 +37,15 @@
   }
 }
 
+#stock {
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+#stock:hover {
+  font-weight: bold;
+}
+
 #chart {
     border: 1px solid black;
 }
