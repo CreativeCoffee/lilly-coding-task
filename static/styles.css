@@ -1,8 +1,40 @@
 .spinner{
   font-size: 140px;
+  display: inline-block; /* must be displyed inline block to make element tranformable */
+  -webkit-animation: spin 5s linear infinite;
+  -moz-animation: spin 5s linear infinite;
+  animation: spin 5s linear infinite;
 }
+
 .spinner:after {
   content: '◌';
+}
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+  }
+}
+
+@-moz-keyframes spin {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(359deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
 }
 
 #chart {
