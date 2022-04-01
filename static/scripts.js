@@ -27,18 +27,17 @@ drawTriangle([950, 535], [950, 565], [965, 550])
 
 document.getElementById("getStocks").addEventListener("click", () =>{
   console.log("clicked") // check event listener pops
-  //const http = new XMLHttpRequest();
   url = "http://127.0.0.1:3000/stocks";
   http.onreadystatechange = (e) => {
-    if(http.readyState === 4) {
+    if(http.readyState === 4) { // Only run next code block if request completed.
       stocksList = JSON.parse(http.responseText) // convert JSON string to JS array
-      for(key in stocksList) {
-        for(let i = 0; i < stocksList[key].length; i++) {
+      for(key in stocksList) { // loop through original JSON array
+        for(let i = 0; i < stocksList[key].length; i++) { // Loop through JS array
           let li = document.createElement('li');
-          document.getElementById("stocksList").appendChild(li);
+          document.getElementById("stocksList").appendChild(li); // Add li to ul in index.html
           li.setAttribute("id", "stock");
           li.setAttribute("onclick", "getStockInfo()")
-          li.innerHTML = stocksList[key][i];
+          li.innerHTML = stocksList[key][i]; // Set html of list item to stock name.
       }
     }
     }
@@ -51,13 +50,13 @@ function getStockInfo() {
   let stockName = document.getElementById("stock").innerHTML;
   url = `http://127.0.0.1:3000/stocks/${stockName}`
   http.onreadystatechange = (e) => {
-    if(http.readyState === 4) {
-      document.getElementById("stockName").innerHTML = `${stockName} Values`
+    if(http.readyState === 4) { // Check req complete
+      document.getElementById("stockName").innerHTML = `${stockName} Values` // set title of section to stock name + values
       let stockInformation = JSON.parse(http.responseText);
-      for(key in stockInformation) {
+      for(key in stockInformation) { // Loop through returned JSON
         let li = document.createElement('li');
         document.getElementById("stockValues").appendChild(li)
-        li.innerHTML = stockInformation[key].value
+        li.innerHTML = stockInformation[key].value // Put JSON value with Key "value" into 
       }
     }
   }
