@@ -27,6 +27,7 @@ drawTriangle([950, 535], [950, 565], [965, 550])
 
 document.getElementById("getStocks").addEventListener("click", () =>{
   console.log("clicked") // check event listener pops
+  document.getElementById("spinnerID").setAttribute("style", "display: none;") // hide spinner when data loads.
   url = "http://127.0.0.1:3000/stocks"
   http.onreadystatechange = (e) => {
     if(http.readyState === 4) { // Only run next code block if request completed.
