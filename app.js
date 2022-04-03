@@ -20,7 +20,7 @@ app.get('/stocks/:symbol', async (req, res) => {
     console.log(`${symbol} Stocks`)
     console.log(data)
   }catch(e) {
-    console.log("CRASHED PLEASE TRY AGAIN") // Log message to console if app crashes
+    console.error(e.toString()) // output error details.
   }
 })
 
