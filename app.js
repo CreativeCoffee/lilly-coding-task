@@ -17,10 +17,10 @@ app.get('/stocks/:symbol', async (req, res) => {
     const { params: { symbol } } = req
     const data = await stocks.getStockPoints(symbol, new Date())
     res.send(data)
-    console.log(`${symbol} Stocks`)
+    console.log(`${symbol} Stocks:`)
     console.log(data)
   }catch(e) {
-    console.error(e.toString()) // output error details.
+    console.error(e.toString()) // output error message.
   }
 })
 

@@ -1,7 +1,7 @@
 const canvas = document.getElementById('chart')
 const ctx = canvas.getContext('2d')
 const http = new XMLHttpRequest();
-let url;
+let url // variable for requested URL.
 
 function drawLine (start, end, style) {
   ctx.beginPath()
@@ -27,7 +27,7 @@ drawTriangle([950, 535], [950, 565], [965, 550])
 
 document.getElementById("getStocks").addEventListener("click", () =>{
   console.log("clicked") // check event listener pops
-  url = "http://127.0.0.1:3000/stocks";
+  url = "http://127.0.0.1:3000/stocks"
   http.onreadystatechange = (e) => {
     if(http.readyState === 4) { // Only run next code block if request completed.
       stocksList = JSON.parse(http.responseText) // convert JSON string to JS array
