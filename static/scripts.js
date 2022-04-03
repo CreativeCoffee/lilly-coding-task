@@ -44,13 +44,13 @@ document.getElementById("getStocks").addEventListener("click", () =>{
   }
   http.open("GET", url);
   http.send();
-});
+})
 
 function getStockInfo() {
   let stockName = document.getElementById("stock").innerHTML;
   url = `http://127.0.0.1:3000/stocks/${stockName}`
   http.onreadystatechange = (e) => {
-    if(http.readyState === 4) { // Check req complete
+    if(http.readyState === 4 && http.status === 200) { // Check req complete
       document.getElementById("stockName").innerHTML = `${stockName} Values` // set title of section to stock name + values
       let stockInformation = JSON.parse(http.responseText);
       for(key in stockInformation) { // Loop through returned JSON
@@ -58,8 +58,10 @@ function getStockInfo() {
         document.getElementById("stockValues").appendChild(li)
         li.innerHTML = stockInformation[key].value // Put JSON value with Key "value" into
       }
+    }else {
+      document.getElementById("stockName").innerHTML = "Error: Try Again" // Display error message
     }
   }
   http.open("GET", url)
-  http.send();
+  http.send()
 }
