@@ -56,7 +56,7 @@ function getStockInfo() {
       for(key in stockInformation) { // Loop through returned JSON
         let li = document.createElement('li');
         document.getElementById("stockValues").appendChild(li)
-        li.innerHTML = stockInformation[key].value // Put JSON value with Key "value" into 
+        li.innerHTML = stockInformation[key].value // Put JSON value with Key "value" into
       }
     }
   }
